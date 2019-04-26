@@ -1,0 +1,31 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  phpfpm:
+    image: USERNAME/phpfpm-app:0.1.0
+    networks:
+      - app-tier
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - phpfpm
+    networks:
+      - app-tier
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./vhosts:/etc/nginx/conf/vhosts
+  mariadb:
+    image: mariadb:latest
+    environment:
+        - MARIADB_USER=mini
+        - MARIADB_PASSWORD=mini
+        - MARIADB_DATABASE=mini
+        - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - app-tier
