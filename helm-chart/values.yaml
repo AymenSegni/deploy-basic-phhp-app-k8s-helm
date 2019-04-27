@@ -15,6 +15,11 @@ phpfpmService:
   name: phpfpm
   type: NodePort
   phpfpmPort: 9000
+persistence:
+  accessMode: ReadWriteOnce
+  enabled: true
+  size: 40Gi
+  storageClass: standard
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).
