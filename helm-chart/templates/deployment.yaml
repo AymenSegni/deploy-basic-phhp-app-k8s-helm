@@ -91,11 +91,11 @@ spec:
         imagePullPolicy: {{ default "" .Values.image.pullPolicy | quote }}
 
         env:
-        - name: MYSQLDB_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mysqldb-root-password
+        # - name: MYSQLDB_ROOT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: {{ template "fullname" . }}
+        #       key: mysqldb-root-password
         - name: MARIADB_USER
           value: {{ default "" .Values.mariadbUser | quote }}
         - name: MARIADB_PASSWORD
@@ -110,20 +110,20 @@ spec:
         ports:
         - name: mysql
           containerPort: 3306
-        livenessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
-        readinessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - ping
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - mysqladmin
+        #     - ping
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 5
+        # readinessProbe:
+        #   exec:
+        #     command:
+        #     - mysqladmin
+        #     - ping
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 1
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
