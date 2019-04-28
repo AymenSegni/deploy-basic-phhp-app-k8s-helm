@@ -26,6 +26,6 @@ services:
         #- MARIADB_USER=mini
         #- MARIADB_PASSWORD=mini
         #- MARIADB_DATABASE=mini
-        - ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - app-tier
