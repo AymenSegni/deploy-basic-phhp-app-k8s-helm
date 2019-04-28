@@ -19,7 +19,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./vhosts:/etc/nginx/conf/vhosts
+      - ./vhosts:/bitnami/nginx/conf/vhosts
   mariadb:
     image: mariadb:latest
     environment:
