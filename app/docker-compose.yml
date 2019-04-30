@@ -10,7 +10,7 @@ services:
     networks:
       - app-tier
   nginx:
-    image: nginx:latest
+    image: 'bitnami/nginx:1.12.0-r2'
     depends_on:
       - phpfpm
     networks:
