@@ -91,11 +91,11 @@ spec:
         imagePullPolicy: {{ default "" .Values.image.pullPolicy | quote }}
 
         env:
-        # - name: MYSQLDB_ROOT_PASSWORD
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: {{ template "fullname" . }}
-        #       key: mysqldb-root-password
+        - name: MYSQLDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: mysqldb-root-password
         - name: MARIADB_USER
           value: {{ default "" .Values.mariadbUser | quote }}
         - name: MARIADB_PASSWORD
