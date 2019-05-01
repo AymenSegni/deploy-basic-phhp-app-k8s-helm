@@ -72,15 +72,12 @@ kind: Deployment
 metadata:
   name: {{ template "fullname" . }}-mariadb
   labels:
-    app: {{ template "fullname" . }}-mariadb
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
 spec:
   template:
     metadata:
       labels:
-        app: {{ template "fullname" . }}
+        app: {{ template "fullname" . }}-mariadb
         release: {{ .Release.Name }}
         component: "{{.Release.Name}}"
         nautilian.snapshot.enabled: "true"
@@ -107,6 +104,8 @@ spec:
           value: {{ default "" .Values.mariadbDatabase | quote }}
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
+
+
         ports:
         - name: mysql
           containerPort: 3306
