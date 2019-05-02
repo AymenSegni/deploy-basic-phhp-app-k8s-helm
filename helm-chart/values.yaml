@@ -3,12 +3,13 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: USERNAME/phpfpm-app
-  tag: 0.1.0
+  repository: aymensegni/phpfpm-app
+  tag: 0.1.3
   pullPolicy: IfNotPresent
 nginxService:
   name: nginx
   type: NodePort
+  session: None
   externalPort: 80
   internalPort: 8080
 phpfpmService:
