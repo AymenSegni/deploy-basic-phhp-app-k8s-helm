@@ -34,16 +34,31 @@ Replace the **USERNAME** placeholder in the app/docker-compose.yml file with you
 
 Build the image using the command below. Remember to replace the USERNAME placeholder with your Docker ID:
 
-docker build . -t  USERNAME/phpfpm-app:0.1.0
-Run the docker-compose up command in order to create and start the containers:
+* `docker build . -t  USERNAME/phpfpm-app:0.1.0`
 
-docker-compose -f app/docker-compose.yml up
+* `docker-compose -f app/docker-compose.yml up`
+
 Check if the application is running correctly by entering http://localhost/phpminiadmin.php in your default browser.
 
 To log in to the application, you must connect first to the database. Click the “advanced settings” link and enter the information below. Then, click “Apply”.
 
-DB user name: test
-Password: test
-DB name: test
-MySQL host: test
-port: 3306
+| header | header |
+| ------ | ------ |
+| cell | cell |
+| cell | cell |DB user name: test
+| header | header |
+| ------ | ------ |
+| cell | cell |
+| cell | cell |Password: test
+| header | header |
+| ------ | ------ |
+| cell | cell |
+| cell | cell |DB name: test
+| header | header |
+| ------ | ------ |
+| cell | cell |
+| cell | cell |MySQL host: mariadb
+| header | header |
+| ------ | ------ |
+| cell | cell |
+| cell | cell |port: 3306
