@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "fullname" . }}-phpfpm
+  name: {{ template "fullname" . }}-php
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "fullname" . }}-phpfpm
+        app: {{ template "fullname" . }}-php
     spec:
       containers:
-      - name: {{ template "fullname" . }}-phpfpm
+      - name: {{ template "fullname" . }}-php
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
@@ -64,78 +64,5 @@ spec:
           mountPath: /bitnami/nginx/conf/vhosts
       volumes:
       - name: nginx-config
-        configMap: 
-          name: {{ template "fullname" . }}    
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: {{ template "fullname" . }}-mariadb
-  labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
-spec:
-  template:
-    metadata:
-      labels:
-        app: {{ template "fullname" . }}-mariadb
-        release: {{ .Release.Name }}
-        component: "{{.Release.Name}}"
-        nautilian.snapshot.enabled: "true"
-    spec:
-      containers:
-      - name: {{ template "fullname" . }}-mariadb
-        image: mariadb:latest
-        imagePullPolicy: {{ default "" .Values.image.pullPolicy | quote }}
-
-        env:
-        - name: MYSQLDB_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mysqldb-root-password
-        - name: MARIADB_USER
-          value: {{ default "" .Values.mariadbUser | quote }}
-        - name: MARIADB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mariadb-password
-        - name: MARIADB_DATABASE
-          value: {{ default "" .Values.mariadbDatabase | quote }}
-        - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
-
-
-        ports:
-        - name: mysql
-          containerPort: 3306
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - mysqladmin
-        #     - ping
-        #   initialDelaySeconds: 30
-        #   timeoutSeconds: 5
-        # readinessProbe:
-        #   exec:
-        #     command:
-        #     - mysqladmin
-        #     - ping
-        #   initialDelaySeconds: 5
-        #   timeoutSeconds: 1
-        resources:
-{{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: config
         configMap:
           name: {{ template "fullname" . }}
-      - name: data
-      {{- if .Values.persistence.enabled }}
-        persistentVolumeClaim:
-          claimName: {{ .Values.persistence.existingClaim | default (include "fullname" .) }}
-      {{- else }}
-        emptyDir: {}
-      {{- end -}}
