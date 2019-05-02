@@ -91,13 +91,14 @@ The application won’t be available until database configuration is complete.
 
 ## Get the application URL
 
-In Minikube, we can also check the application service to get the application’s URL:
+In Minikube, we can check the application service to get the application’s URL:
 
 `minikube service phpfpm-php-app-nginx --url`
 
 ## Explore the app
-Open <app_url>/phpminiadmin.php in browser and use the right Mariadb credentials (use the database service name: phpfpm-mariadb as the MYSQL_HOST) to access the phpminiadmin application.
-Then we can read data  from the database by runnig the SQL query  like the list of tables, databases ... 
+
+Open` <app_url>/phpminiadmin.php` in browser and use the right Mariadb credentials (use the database service name: phpfpm-mariadb as the MYSQL_HOST) to access the phpminiadmin application.
+Then we can read data  from the database by runnig the SQL query ike the list of tables, databases ... 
 ![alt APP](result.png)
 
 
