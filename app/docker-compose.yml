@@ -23,9 +23,10 @@ services:
   mariadb:
     image: mariadb:latest
     environment:
-        #- MARIADB_USER=mini
-        #- MARIADB_PASSWORD=mini
-        #- MARIADB_DATABASE=mini
-        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        #   Initial testing values 
+        - MARIADB_USER=test
+        - MARIADB_PASSWORD=test
+        - MARIADB_DATABASE=test
+        - ALLOW_EMPTY_PASSWORD=yes
     networks:
       - app-tier
