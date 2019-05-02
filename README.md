@@ -2,7 +2,7 @@
 
 Run a custom PHP application (PHP-FPM), MySQL database (with persistent disk secret credentials) and Nginx server on Kubernetes with Helm charts.
 
-#Introduction
+# Introduction
 This README walks you through the process of running an example PHP (PHP-FPM) application on a Kubernetes cluster.
 This solution allows you to automate the deployment, the scaling and management of the application containers.
 
@@ -76,7 +76,7 @@ another for the MariaDB service with a persistent disk (**Persistent Volume Clai
 
 Also we will create a **K8S Secret object** with Opaque type to store the Database credentials: mariadb-password: xxxxx & mariadb-root-password: xxxxx
 
-**NOTE: **
+**NOTE:**
 * The database name, root password, and user credentials have been specified by adding the --set options, and the chart name is specified by adding the --name option.
 * `DB_ROOTPASSWORD, DB_USERNAME, DB_USERPASSWORD, and DB_NAME `are placeholders for the database root password, user credentials and database name respectively, remember to replace them with the right values.
 
