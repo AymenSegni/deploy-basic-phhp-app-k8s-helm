@@ -6,6 +6,7 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
   type: {{ .Values.nginxService.type }}
+  sessionAffinity: {{ .Values.nginxService.session }}
   ports:
   - port: {{ .Values.nginxService.externalPort }}
     targetPort: {{ .Values.nginxService.internalPort }}
