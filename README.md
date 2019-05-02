@@ -41,10 +41,10 @@ Check if the application is running correctly by entering http://localhost/phpmi
 
 To log in to the application, you must connect first to the database. Click the “advanced settings” link and enter the information below. Then, click “Apply”.
 *  DB user name: test
-*Password: test
-* DB name: test
-* MySQL host: mariadb
-* port: 3306
+*  Password: test
+*  DB name: test
+*  MySQL host: mariadb
+*  port: 3306
 
 # Step 3: Publish The Docker Image
 
@@ -74,7 +74,7 @@ Using the helm install comman, we will create three pods within the cluster, one
 
 another for the MariaDB service with a persistent disk (**Persistent Volume Claims**: phpfpm-mariadb with 8Gi Storage), and the third for the PHP-FPM application.
 
-Also we will create a ** K8S Secret object** with Opaque type to store the Database credentials: mariadb-password: xxxxx & mariadb-root-password: xxxxx
+Also we will create a **K8S Secret object** with Opaque type to store the Database credentials: mariadb-password: xxxxx & mariadb-root-password: xxxxx
 
 **NOTE: **
 * The database name, root password, and user credentials have been specified by adding the --set options, and the chart name is specified by adding the --name option.
@@ -98,7 +98,7 @@ In Minikube, we can also check the application service to get the application’
 ## Explore the app
 Open <app_url>/phpminiadmin.php in browser and use the right Mariadb credentials (use the database service name: phpfpm-mariadb as the MYSQL_HOST) to access the phpminiadmin application.
 Then we can read data  from the database by runnig the SQL query  like the list of tables, databases ... 
-
+![alt APP](result.png)
 
 
 Congratulations! our PHP application has been successfully deployed on Kubernetes!
