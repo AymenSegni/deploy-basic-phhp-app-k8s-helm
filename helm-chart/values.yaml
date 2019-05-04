@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: USERNAME/phpfpm-app
-  tag: 0.1.3
+  tag: 0.1.0
   pullPolicy: IfNotPresent
 nginxService:
   name: nginx
