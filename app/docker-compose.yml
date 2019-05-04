@@ -21,7 +21,7 @@ services:
     volumes:
       - ./vhosts:/bitnami/nginx/conf/vhosts
   mariadb:
-    image: mariadb:latest
+    image: bitnami/mariadb:latest
     environment:
         #   Initial testing values 
         - MARIADB_USER=test
