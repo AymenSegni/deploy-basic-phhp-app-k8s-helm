@@ -60,7 +60,8 @@ To upload the image to Docker Hub, follow the steps below:
 
 # Step 4: Deploy The Example Application In Kubernetes 
 
-Move into the **helm-charts** directory by executing the command : `cd helm-charts`
+Move into the **helm-chart** directory by executing the command :
+`$ cd helm-chart`
 
 In the helm folder we have:
 
