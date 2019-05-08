@@ -108,7 +108,7 @@ In Minikube, we can check the application service to get the application’s URL
 
 ## Explore the app
 
-Copy the **<application url>** from the last command output. then, using this value open **<application url>**`/phpminiadmin.php` in your default browser, 
+Copy the **application url** from the last command output. then, using this value open **application url**`/phpminiadmin.php` in your default browser, 
 
 and use the **right Mariadb credentials** (use the database service name:** phpfpm-mariadb** as the **MYSQL_HOST**) to access the phpminiadmin application.
 Finally, we can read data  from the database by runnig the SQL query ike the list of tables, databases ... 
