@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "fullname" . }}-php
+  name: {{ template "fullname" . }}-phpfpm
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "fullname" . }}-php
+        app: {{ template "fullname" . }}-phpfpm
     spec:
       containers:
-      - name: {{ template "fullname" . }}-php
+      - name: {{ template "fullname" . }}-phpfpm
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
