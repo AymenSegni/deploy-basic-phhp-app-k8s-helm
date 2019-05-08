@@ -85,6 +85,10 @@ Also we will create a **K8S Secret object** with Opaque type to store the Databa
 
 ## Deploy the app with helm:
 
+First, make sure that you are able to connect to your Kubernetes cluster by executing the command below:
+
+`$ kubectl cluster-info`
+
 To deploy the example application in K8S, we use the Helm CLI: install 
 
 `$ helm install --set mariadb.mariadbRootPassword=mini,mariadb.mariadbUser=mini,mariadb.mariadbPassword=mini,mariadb.mariadbDatabase=mini --name phpfpm .`
@@ -104,8 +108,10 @@ In Minikube, we can check the application service to get the application’s URL
 
 ## Explore the app
 
-Open` <app_url>/phpminiadmin.php` in browser and use the right Mariadb credentials (use the database service name: phpfpm-mariadb as the MYSQL_HOST) to access the phpminiadmin application.
-Then we can read data  from the database by runnig the SQL query ike the list of tables, databases ... 
+Copy the `<application url>` from the last command output. then, using this value open `<application url>/phpminiadmin.php` in your default browser, 
+
+and use the right Mariadb credentials (use the database service name: phpfpm-mariadb as the MYSQL_HOST) to access the phpminiadmin application.
+Finally, we can read data  from the database by runnig the SQL query ike the list of tables, databases ... 
 ![alt APP](result.png)
 
 
