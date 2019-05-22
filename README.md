@@ -23,7 +23,7 @@ Clone the repository. This will clone the sample repository and make it the curr
 
 * `$ git clone https://gitlab.com/aymen_segni/basic-k8s-helm.git`
 
-* `$ cd basic-k8s-helm/`
+* `$ cd php-mysql-nginx-kubernetes-helm/`
 
 In the **app** folder you will see a file named phpminiadmin.php. This is a small PHP application for accessing and managing MySQL databases which we will use as an example application.
 
